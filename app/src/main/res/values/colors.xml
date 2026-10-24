@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="gender_select">#FF6B2C</color>
+    <color name="gender_unselect">#2A2F3D</color>
+
+    <!-- Base Palette -->
+    <color name="gym_background">#121418</color>
+    <color name="gym_surface">#1A1D24</color>
+    <color name="gym_surface_variant">#242832</color>
+
+    <!-- Brand / Accent Colors -->
+    <color name="gym_primary">#FF5722</color>
+    <color name="gym_primary_container">#3D1E14</color>
+
+    <!-- Text Colors -->
+    <color name="gym_text_primary">#FFFFFF</color>
+    <color name="gym_text_secondary">#9E9EA7</color>
+
+    <!-- Gradients & Extras -->
+    <color name="gym_card_stroke">#2D323E</color>
+
+    <!-- Bottom Nav Selector Colors -->
+    <color name="bottom_nav_active">#FF4B2B</color>
+    <color name="bottom_nav_inactive">#6E7388</color>
+
+<!--    shimmer effect-->
+    <color name="shimmer_color">#CECFD2</color>
+
+</resources>

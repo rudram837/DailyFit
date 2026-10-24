@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- 20% opacity orange (#33 is hex for ~20% alpha, FF5722 is your primary color) -->
+    <solid android:color="#33FF5722" />
+
+</shape>

@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0E1117"
+    tools:context=".View.Activity.BMI.BMICalculatorActivity">
+
+    <!-- Top App Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="4dp"
+            android:src="@drawable/arrow_left_01"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSubtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTitle"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="BMI Calculator"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Know your Body Mass Index"
+            android:textColor="#8B92A5"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Main Content Scrollable -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp">
+
+            <!-- Hero Card: Inputs -->
+            <!-- Hero Card: Inputs -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardHeroInputs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="#1A1D24"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Gender Selector -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="Gender"
+                        android:textColor="#8B92A5"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="32dp"
+                        android:orientation="horizontal">
+
+<!--                        <com.google.android.material.card.MaterialCardView-->
+<!--                            android:id="@+id/btnMale"-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginEnd="8dp"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true"-->
+<!--                            app:cardBackgroundColor="@color/gender_select"-->
+<!--                            app:cardCornerRadius="24dp"-->
+<!--                            app:strokeWidth="0dp">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:paddingVertical="12dp"-->
+<!--                                android:text="Male"-->
+<!--                                android:textColor="#FFFFFF"-->
+<!--                                android:textStyle="bold" />-->
+<!--                        </com.google.android.material.card.MaterialCardView>-->
+
+<!--                        <com.google.android.material.card.MaterialCardView-->
+<!--                            android:id="@+id/btnFemale"-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginEnd="8dp"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:clickable="true"-->
+<!--                            android:focusable="true"-->
+<!--                            app:cardBackgroundColor="@color/gender_unselect"-->
+<!--                            app:cardCornerRadius="24dp"-->
+<!--                            app:strokeWidth="0dp">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:paddingVertical="12dp"-->
+<!--                                android:text="Female"-->
+<!--                                android:textColor="#FFFFFF"-->
+<!--                                android:textStyle="bold" />-->
+<!--                        </com.google.android.material.card.MaterialCardView>-->
+
+                        <com.google.android.material.button.MaterialButtonToggleGroup
+                            android:id="@+id/toggleGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            app:singleSelection="true"
+                            app:checkedButton="@id/btnMale">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnMale"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="Male"
+                                android:textColor="@color/toggle_button_text"
+                                app:backgroundTint="@color/toggle_button_bg"
+                                app:cornerRadius="24dp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnFemale"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="Female"
+                                android:textColor="@color/toggle_button_text"
+                                app:backgroundTint="@color/toggle_button_bg"
+                                app:cornerRadius="24dp" />
+
+                        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+                    </LinearLayout>
+
+                    <!-- Height Input -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Height"
+                            android:textColor="#8B92A5"
+                            android:textSize="14sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tvHeightValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="170"
+                            android:textColor="#FFFFFF"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.button.MaterialButtonToggleGroup
+                            android:id="@+id/toggleHeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            app:singleSelection="true"
+                            app:checkedButton="@id/btnCM">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnCM"
+                                style="@style/Widget.Material3.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:minWidth="50dp"
+                                android:minHeight="0dp"
+                                android:padding="0dp"
+                                android:text="CM"
+                                android:textColor="@color/toggle_text_color"
+                                android:textSize="12sp"
+                                app:strokeColor="@color/toggle_stroke_color" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnFT"
+                                style="@style/Widget.Material3.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:minWidth="50dp"
+                                android:minHeight="0dp"
+                                android:padding="0dp"
+                                android:text="FT"
+                                android:textColor="@color/toggle_text_color"
+                                android:textSize="12sp"
+                                app:strokeColor="@color/toggle_stroke_color" />
+
+                        </com.google.android.material.button.MaterialButtonToggleGroup>
+                    </LinearLayout>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:value="170"
+                        android:valueFrom="100"
+                        android:valueTo="250"
+                        app:labelBehavior="floating"
+                        app:thumbColor="#FF6B2C"
+                        app:trackColorActive="#FF6B2C"
+                        app:trackColorInactive="#2A2F3D" />
+
+                    <!-- Weight Input -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Weight"
+                            android:textColor="#8B92A5"
+                            android:textSize="14sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tvWeightValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="65.5"
+                            android:textColor="#FFFFFF"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.button.MaterialButtonToggleGroup
+                            android:id="@+id/toggleWeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            app:singleSelection="true"
+                            app:checkedButton="@id/btnKG">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnKG"
+                                style="@style/Widget.Material3.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:minWidth="50dp"
+                                android:minHeight="0dp"
+                                android:padding="0dp"
+                                android:text="KG"
+                                android:textSize="12sp"
+                                android:textColor="@color/toggle_text_color"
+                                app:strokeColor="@color/toggle_stroke_color" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnLB"
+                                style="@style/Widget.Material3.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:minWidth="50dp"
+                                android:minHeight="0dp"
+                                android:padding="0dp"
+                                android:text="LB"
+                                android:textSize="12sp"
+                                android:textColor="@color/toggle_text_color"
+                                app:strokeColor="@color/toggle_stroke_color" />
+
+                        </com.google.android.material.button.MaterialButtonToggleGroup>
+                    </LinearLayout>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:value="65.5"
+                        android:valueFrom="30"
+                        android:valueTo="150"
+                        app:labelBehavior="floating"
+                        app:thumbColor="#FF6B2C"
+                        app:trackColorActive="#FF6B2C"
+                        app:trackColorInactive="#2A2F3D" />
+
+                    <!-- Age Selector -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Age"
+                            android:textColor="#8B92A5"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnAgeMinus"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:backgroundTint="#2A2F3D"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:padding="0dp"
+                            android:text="-"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp"
+                            app:cornerRadius="20dp" />
+
+                        <TextView
+                            android:id="@+id/tvAgeValue"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="24"
+                            android:textColor="#FFFFFF"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnAgePlus"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:backgroundTint="#2A2F3D"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:padding="0dp"
+                            android:text="+"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp"
+                            app:cornerRadius="20dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Calculate Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCalculate"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="24dp"
+                android:text="Calculate BMI"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:backgroundTint="#FF6B2C"
+                app:cornerRadius="30dp"
+                app:layout_constraintTop_toBottomOf="@id/cardHeroInputs" />
+
+            <!-- RESULT SECTION (Initially Gone, visible for preview) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="#1A1D24"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="8dp"
+                app:layout_constraintTop_toBottomOf="@id/btnCalculate"
+                app:strokeWidth="0dp"
+                tools:visibility="visible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/tvResultTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your BMI Result"
+                        android:textColor="#8B92A5"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- Circular Progress Ring -->
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/progressBMI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:progress="60"
+                        app:indicatorColor="#4CAF50"
+                        app:indicatorSize="160dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvResultTitle"
+                        app:trackColor="#2A2F3D"
+                        app:trackCornerRadius="8dp"
+                        app:trackThickness="12dp" />
+
+                    <TextView
+                        android:id="@+id/tvBMIValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22.4"
+                        android:textColor="#FFFFFF"
+                        android:textSize="48sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/progressBMI"
+                        app:layout_constraintEnd_toEndOf="@id/progressBMI"
+                        app:layout_constraintStart_toStartOf="@id/progressBMI"
+                        app:layout_constraintTop_toTopOf="@id/progressBMI"
+                        app:layout_constraintVertical_bias="0.4" />
+
+                    <TextView
+                        android:id="@+id/tvBMIStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Healthy"
+                        android:textColor="#4CAF50"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@id/progressBMI"
+                        app:layout_constraintStart_toStartOf="@id/progressBMI"
+                        app:layout_constraintTop_toBottomOf="@id/tvBMIValue" />
+
+                    <!-- BMI Category Scale -->
+                    <LinearLayout
+                        android:id="@+id/layoutBMIScale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@id/progressBMI">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:background="@drawable/bg_rounded_corners"
+                            android:clipToOutline="true"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="18.5"
+                                android:background="#2196F3" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="6.5"
+                                android:background="#4CAF50" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:background="#FF9800" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"
+                                android:background="#F44336" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:text="Low"
+                                android:textColor="#2196F3"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Normal"
+                                android:textColor="#4CAF50"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text="High"
+                                android:textColor="#F44336"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Health Suggestion Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSuggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="#1A1D24"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintTop_toBottomOf="@id/cardResult"
+                app:strokeWidth="0dp"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="Action Plan"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvIdealWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="✅ Ideal Weight Range: "
+                        android:textColor="#8B92A5"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvCalories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="🔥 Calories: -- kcal / day"
+                        android:textColor="#8B92A5"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvWorkout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="💪 Workout: --"
+                        android:textColor="#8B92A5"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvDiet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🥗 Diet Advice: "
+                        android:textColor="#8B92A5"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- BMI Info Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#1A1D24"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintTop_toBottomOf="@id/cardSuggestions"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="About BMI"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@android:drawable/ic_dialog_info"
+                            app:tint="#8B92A5" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Formula: weight (kg) / [height (m)]²"
+                        android:textColor="#FF6B2C"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="4dp"
+                        android:text="Body Mass Index (BMI) is a measure of body fat based on height and weight. It provides a generalized metric to help categorize health risks based on tissue mass."
+                        android:textColor="#8B92A5"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Disclaimer -->
+            <TextView
+                android:id="@+id/tvDisclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="BMI is only an estimate and should not replace professional medical advice."
+                android:textColor="#5C6275"
+                android:textSize="11sp"
+                app:layout_constraintTop_toBottomOf="@id/cardInfo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

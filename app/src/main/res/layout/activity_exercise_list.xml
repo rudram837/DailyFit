@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0E1117"
+    tools:context=".View.Activity.ExerciseListActivity">
+
+    <!-- 1. Top App Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:src="@drawable/arrow_left_01"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSubtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTitle"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="All Exercises"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Browse every available workout"
+            android:textColor="#8B92A5"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/btnMenuSearch"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="32dp"-->
+<!--            android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"-->
+<!--            android:padding="4dp"-->
+<!--            android:src="@android:drawable/ic_menu_search"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/tvSubtitle"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/tvTitle"-->
+<!--            app:tint="#FFFFFF" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 2. Search Section -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSearch"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="#1A1D24"
+        app:cardCornerRadius="26dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@android:drawable/ic_menu_search"
+                app:tint="#8B92A5" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:background="@null"
+                android:hint="Search exercises..."
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#5C6275"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 3. Category Filter -->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvCategories"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:clipToPadding="false"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingHorizontal="16dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/cardSearch"-->
+<!--        tools:listitem="@layout/item_category_chip" />-->
+
+    <!-- 4, 5, 6. Content Area (List, Loading, Empty States) -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardSearch">
+
+        <!-- Exercise List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvExercises"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="40dp"
+            tools:listitem="@layout/item_exercise" />
+
+        <!-- Loading State (Shimmer Layout placeholder setup) -->
+        <LinearLayout
+            android:id="@+id/layoutLoading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="8dp"
+            android:visibility="gone"
+            tools:visibility="gone">
+            <!-- Add ShimmerFrameLayout wrapper here if using Facebook Shimmer library -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_rounded_corners"
+                android:alpha="0.3" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_rounded_corners"
+                android:alpha="0.3" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:background="@drawable/bg_rounded_corners"
+                android:alpha="0.3" />
+        </LinearLayout>
+
+        <!-- Empty State -->
+        <LinearLayout
+            android:id="@+id/layoutEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="24dp"
+                android:src="@android:drawable/ic_menu_info_details"
+                app:tint="#2A2F3D" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="No exercises found"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="Try adjusting your filters or search for something else."
+                android:textColor="#8B92A5"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRetry"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="32dp"
+                android:paddingVertical="12dp"
+                android:text="Clear Filters"
+                android:textColor="#FF6B2C"
+                app:cornerRadius="24dp"
+                app:strokeColor="#FF6B2C" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

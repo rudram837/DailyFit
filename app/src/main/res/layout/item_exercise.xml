@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardBackgroundColor="#1A1D24"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Left side: Exercise Thumbnail -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardThumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:cardBackgroundColor="#2A2F3D"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
+
+            <ImageView
+                android:id="@+id/ivExercise"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery"
+                app:tint="#5C6275" />
+
+            <TextView
+                android:id="@+id/tvPlaceholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#2A2F3D"
+                android:gravity="center"
+                android:text="No Preview Available"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Top Right: Title and Favorite -->
+        <TextView
+            android:id="@+id/tvExerciseName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/btnFavorite"
+            app:layout_constraintStart_toEndOf="@id/cardThumbnail"
+            app:layout_constraintTop_toTopOf="@id/cardThumbnail"
+            tools:text="Barbell Bench Press" />
+
+        <ImageView
+            android:id="@+id/btnFavorite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@android:drawable/btn_star"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cardThumbnail"
+            app:tint="#8B92A5" />
+
+        <!-- Tags: Target Muscle & Equipment -->
+        <TextView
+            android:id="@+id/tvMuscle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_rounded_corners"
+            android:backgroundTint="#FF6B2C"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvExerciseName"
+            app:layout_constraintTop_toBottomOf="@id/tvExerciseName"
+            tools:text="Chest" />
+
+        <TextView
+            android:id="@+id/tvEquipment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_rounded_corners"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:textColor="#8B92A5"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@id/tvMuscle"
+            app:layout_constraintTop_toBottomOf="@id/tvExerciseName"
+            tools:text="Barbell" />
+
+        <!-- Stats Row -->
+        <LinearLayout
+            android:id="@+id/layoutStats"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvExerciseName"
+            app:layout_constraintTop_toBottomOf="@id/tvMuscle">
+
+            <TextView
+                android:id="@+id/tvDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="4dp"
+                android:textColor="#8B92A5"
+                android:textSize="12sp"
+                app:drawableStartCompat="@android:drawable/ic_menu_sort_by_size"
+                app:drawableTint="#FF6B2C"
+                tools:text="Intermediate" />
+
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="4dp"
+                android:textColor="#8B92A5"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:drawableStartCompat="@android:drawable/ic_menu_recent_history"
+                app:drawableTint="#8B92A5"
+                tools:text="45 Min" />
+
+            <TextView
+                android:id="@+id/tvCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:textColor="#8B92A5"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:drawableStartCompat="@android:drawable/ic_menu_view"
+                app:drawableTint="#F44336"
+                tools:text="320 kcal" />
+        </LinearLayout>
+
+        <!-- Action Buttons -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDetails"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingHorizontal="16dp"
+            android:text="Details"
+            android:textColor="#8B92A5"
+            android:textSize="13sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardThumbnail" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStart"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Start Workout"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:backgroundTint="#FF6B2C"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnDetails"
+            app:layout_constraintTop_toBottomOf="@id/layoutStats" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
